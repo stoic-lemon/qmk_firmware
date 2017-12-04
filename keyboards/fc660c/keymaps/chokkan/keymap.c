@@ -14,6 +14,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "fc660c.h"
+#include "action_layer.h"
+
+extern keymap_config_t keymap_config;
+
+//Tap Dance Declarations
+enum {
+  TD_SPC_ENT = 0
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = KEYMAP(
@@ -25,10 +33,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
   [1] = KEYMAP(
         KC_GRV, KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12, _______,     _______,
-        _______,_______,_______,_______,_______,_______,_______,_______,KC_PSCR,KC_SLCK,KC_PAUS,_______,_______,_______,     _______,
-        _______,_______,_______,_______,_______,_______,_______,_______,KC_HOME,KC_PGUP,_______,_______,     _______,
+        _______,KC_TAB,_______,KC_UP,_______,_______,_______,_______,KC_PSCR,KC_SLCK,KC_PAUS,_______,_______,_______,     _______,
+        _______,_______,KC_LEFT,KC_DOWN,KC_RGHT,_______,_______,_______,KC_HOME,KC_PGUP,_______,_______,     _______,
         _______,_______,_______,_______,_______,_______,_______,_______,KC_END, KC_PGDN,_______,_______,     _______,
-        _______,_______,_______,                _______,                _______,_______,MO(1),       _______,_______,_______
+        RESET,_______,_______,                _______,                _______,_______,MO(1),       _______,_______,_______
     )
 };
 
@@ -39,10 +47,4 @@ const uint16_t PROGMEM fn_actions[] = {
 qk_tap_dance_action_t tap_dance_actions[] = {
    //Tap for Space, double tap for Enter
   [TD_SPC_ENT] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_ENT)
-};
-
-const uint16_t PROGMEM fn_actions[] = {
-    [0] = ACTION_MODS_ONESHOT(MOD_LSFT),
-    [1] = ACTION_MODS_ONESHOT(MOD_LALT),
-    [2] = ACTION_MODS_ONESHOT(MOD_LCTL)
 };
